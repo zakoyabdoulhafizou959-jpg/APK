@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aicha Beauté - Salon de Coiffure</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  :root {
+    --primary: #c9a96e;
+    --primary-dark: #a8894f;
+    --dark: #1a1a1a;
+    --light: #faf7f2;
+    --rose: #e8c4c4;
+    --text: #333;
+    --whatsapp: #25D366;
+  }
+  
+  html { scroll-behavior: smooth; }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text);
+    background: var(--light);
+    overflow-x: hidden;
+  }
+  
+  /* NAVBAR */
+  nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 20px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    transition: all 0.4s ease;
+    background: rgba(26, 26, 26, 0.95);
+    backdrop-filter: blur(10px);
+  }
+  
+  nav.scrolled {
+    padding: 15px 8%;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  }
+  
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--primary);
+    letter-spacing: 2px;
+  }
+  
+  .logo span { color: white; }
+  
+  .nav-links {
+    display: flex;
+    gap: 35px;
+    list-style: none;
+  }
+  
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 15px;
+    position: relative;
+    transition: color 0.3s;
+  }
+  
+  .nav-links a:hover { color: var(--primary); }
+  
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: width 0.3s;
+  }
+  
+  .nav-links a:hover::after { width: 100%; }
+  
+  .menu-toggle {
+    display: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  /* HERO */
+  .hero {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+  }
+  
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('https://raw.githubusercontent.com/zakoyabdoulhafizou959-jpg/A-cha-beaut-/main/IMG-20260621-WA0018.jpg') center/cover;
+    filter: brightness(0.4);
+    z-index: -1;
+    animation: zoomIn 20s infinite alternate;
+  }
+  
+  @keyframes zoomIn {
+    from { transform: scale(1); }
+    to { transform: scale(1.1); }
+  }
+  
+  .hero-content {
+    color: white;
+    max-width: 800px;
+    padding: 0 20px;
+    animation: fadeUp 1.2s ease;
+  }
+  
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .hero .subtitle {
+    color: var(--primary);
+    font-size: 18px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    font-weight: 300;
+  }
+  
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(48px, 8vw, 90px);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 25px;
+  }
+  
+  .hero h1 span {
+    color: var(--primary);
+    font-style: italic;
+  }
+  
+  .hero p {
+    font-size: 18px;
+    margin-bottom: 40px;
+    opacity: 0.9;
+    font-weight: 300;
+  }
+  
+  .btn {
+    display: inline-block;
+    padding: 16px 40px;
+    background: var(--primary);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+    border: 2px solid var(--primary);
+    cursor: pointer;
+  }
+  
+  .btn:hover {
+    background: transparent;
+    color: var(--primary);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(201, 169, 110, 0.3);
+  }
+  
+  .btn-outline {
+    background: transparent;
+    color: white;
+    border-color: white;
+    margin-left: 15px;
+  }
+  
+  .btn-outline:hover {
+    background: white;
+    color: var(--dark);
+  }
+  
+  .btn-whatsapp {
+    background: var(--whatsapp);
+    border-color: var(--whatsapp);
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .btn-whatsapp:hover {
+    background: transparent;
+    color: var(--whatsapp);
+  }
+  
+  .btn-map {
+    background: #4285F4;
+    border-color: #4285F4;
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .btn-map:hover {
+    background: transparent;
+    color: #4285F4;
+  }
+  
+  .scroll-down {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 24px;
+    animation: bounce 2s infinite;
+  }
+  
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(10px); }
+  }
+  
+  /* SECTIONS */
+  section { padding: 100px 8%; }
+  
+  .section-title {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  
+  .section-title .label {
+    color: var(--primary);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 15px;
+    display: block;
+  }
+  
+  .section-title h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 5vw, 52px);
+    color: var(--dark);
+    font-weight: 700;
+  }
+  
+  .section-title h2 span {
+    color: var(--primary);
+    font-style: italic;
+  }
+  
+  .divider {
+    width: 60px;
+    height: 3px;
+    background: var(--primary);
+    margin: 20px auto;
+  }
+  
+  /* ABOUT */
+  .about {
+    background: white;
+  }
+  
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  
+  .about-image {
+    position: relative;
+    height: 500px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+  }
+  
+  .about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s;
+  }
+  
+  .about-image:hover img { transform: scale(1.05); }
+  
+  .about-image::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: -20px;
+    bottom: -20px;
+    border: 3px solid var(--primary);
+    border-radius: 10px;
+    z-index: -1;
+  }
+  
+  .about-text h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 38px;
+    margin-bottom: 25px;
+    color: var(--dark);
+  }
+  
+  .about-text p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  .features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 30px;
+  }
+  
+  .feature {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .feature i {
+    color: var(--primary);
+    font-size: 20px;
+  }
+  
+  /* SERVICES */
+  .services {
+    background: var(--light);
+  }
+  
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+  }
+  
+  .service-card {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 15px;
+    text-align: center;
+    transition: all 0.4s;
+    border: 1px solid #eee;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--primary);
+    transform: scaleX(0);
+    transition: transform 0.4s;
+  }
+  
+  .service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  }
+  
+  .service-card:hover::before { transform: scaleX(1); }
+  
+  .service-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 25px;
+    color: white;
+    font-size: 32px;
+    transition: transform 0.4s;
+  }
+  
+  .service-card:hover .service-icon {
+    transform: rotateY(360deg);
+  }
+  
+  .service-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: var(--dark);
+  }
+  
+  .service-card p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-size: 14px;
+  }
+  
+  .price {
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 20px;
+  }
+  
+  /* GALLERY */
+  .gallery {
+    background: white;
+  }
+  
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+  }
+  
+  .gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    cursor: pointer;
+    aspect-ratio: 1;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s;
+  }
+  
+  /* Badge numéro du modèle */
+  .model-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: var(--primary);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    z-index: 2;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+  
+  .gallery-item::after {
+    content: 'Réserver';
+    font-family: 'Poppins', sans-serif;
+    position: absolute;
+    inset: 0;
+    background: rgba(201, 169, 110, 0.9);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity 0.4s;
+    border: 2px solid white;
+    border-radius: 10px;
+    z-index: 1;
+  }
+  
+  .gallery-item:hover img { transform: scale(1.15); }
+  .gallery-item:hover::after { opacity: 1; }
+  
+  /* CONTACT */
+  .contact {
+    background: var(--dark);
+    color: white;
+  }
+  
+  .contact .section-title h2 { color: white; }
+  
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  
+  .contact-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    margin-bottom: 25px;
+    color: var(--primary);
+  }
+  
+  .contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 25px;
+  }
+  
+  .contact-item i {
+    width: 50px;
+    height: 50px;
+    background: var(--primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 18px;
+  }
+  
+  .contact-item h4 {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  
+  .contact-item p {
+    color: #bbb;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  
+  .contact-form {
+    background: rgba(255,255,255,0.05);
+    padding: 40px;
+    border-radius: 15px;
+    border: 1px solid rgba(201, 169, 110, 0.2);
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 14px 18px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 8px;
+    color: white;
+    font-family: inherit;
+    font-size: 14px;
+    transition: all 0.3s;
+  }
+  
+  .form-group input:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: rgba(255,255,255,0.12);
+  }
+  
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    color: #888;
+  }
+  
+  .form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+  
+  /* FOOTER */
+  footer {
+    background: #0f0f0f;
+    color: #999;
+    text-align: center;
+    padding: 30px 8%;
+    border-top: 1px solid rgba(201, 169, 110, 0.2);
+  }
+  
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .social-links a {
+    width: 45px;
+    height: 45px;
+    border: 1px solid var(--primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+  
+  .social-links a:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-3px);
+  }
+  
+  /* LIGHTBOX */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.95);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    flex-direction: column;
+  }
+  
+  .lightbox.active { display: flex; }
+  
+  .lightbox-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .lightbox img {
+    max-width: 100%;
+    max-height: 70vh;
+    border-radius: 10px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  }
+  
+  .lightbox-close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    color: white;
+    font-size: 32px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    transition: color 0.3s;
+  }
+  
+  .lightbox-close:hover {
+    color: var(--primary);
+  }
+  
+  /* Badge du modèle dans la lightbox */
+  .lightbox-model-info {
+    background: var(--primary);
+    color: white;
+    padding: 10px 25px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 5px 15px rgba(201, 169, 110, 0.4);
+  }
+  
+  .lightbox-reserve {
+    margin-top: 25px;
+    padding: 15px 40px;
+    background: var(--whatsapp);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s;
+    box-shadow: 0 5px 20px rgba(37, 211, 102, 0.3);
+  }
+  
+  .lightbox-reserve:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+  }
+  
+  /* DATE PICKER MODAL */
+  .date-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.8);
+    z-index: 3000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .date-modal.active { display: flex; }
+  
+  .date-modal-content {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .date-modal-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: var(--dark);
+  }
+  
+  .date-modal-content .selected-model {
+    background: var(--primary);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  
+  .date-modal-content input[type="date"] {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid var(--primary);
+    border-radius: 8px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    font-family: inherit;
+  }
+  
+  .date-modal-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+  }
+  
+  .btn-cancel {
+    background: #999;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s;
+  }
+  
+  .btn-cancel:hover {
+    background: #777;
+  }
+  
+  .btn-confirm {
+    background: var(--whatsapp);
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s;
+  }
+  
+  .btn-confirm:hover {
+    background: #128C7E;
+  }
+  
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .nav-links {
+      position: fixed;
+      top: 70px;
+      right: -100%;
+      flex-direction: column;
+      background: var(--dark);
+      width: 70%;
+      height: calc(100vh - 70px);
+      padding: 40px;
+      transition: right 0.4s;
+    }
+    
+    .nav-links.active { right: 0; }
+    .menu-toggle { display: block; }
+    
+    .about-grid,
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    
+    .about-image { height: 400px; }
+    
+    section { padding: 70px 5%; }
+    
+    .btn-outline { margin-left: 0; margin-top: 15px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="logo">Aicha<span> Beauté</span></div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home">Accueil</a></li>
+    <li><a href="#about">À propos</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#gallery">Galerie</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="menu-toggle" onclick="toggleMenu()">
+    <i class="fas fa-bars"></i>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <p class="subtitle">✦ Salon de Coiffure & Beauté ✦</p>
+    <h1>Révélez votre <span>Beauté</span><br>naturelle</h1>
+    <p>Une expérience unique de soins et de coiffure dans un cadre élégant et raffiné</p>
+    <a href="#services" class="btn">Nos Services</a>
+    <a href="#contact" class="btn btn-outline">Prendre RDV</a>
+  </div>
+  <a href="#about" class="scroll-down"><i class="fas fa-chevron-down"></i></a>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-title">
+    <span class="label">À propos de nous</span>
+    <h2>L'art de la <span>beauté</span></h2>
+    <div class="divider"></div>
+  </div>
+  <div class="about-grid">
+    <div class="about-image">
+      <img src="https://raw.githubusercontent.com/zakoyabdoulhafizou959-jpg/A-cha-beaut-/main/02a46dc2cf13d63feea30e9485994cfe.jpg" alt="Aicha Beauté">
+    </div>
+    <div class="about-text">
+      <h3>Bienvenue chez Aicha Beauté</h3>
+      <p>Dans notre salon, nous croyons que chaque femme mérite de se sentir belle et confiante. Notre équipe passionnée de coiffeurs professionnels vous accueille dans un cadre chaleureux et moderne pour sublimer votre beauté naturelle.</p>
+      <p>Que ce soit pour une coupe tendance, une coloration éclatante, un soin capillaire profond ou une mise en beauté pour une occasion spéciale, nous mettons tout notre savoir-faire à votre service.</p>
+      <div class="features">
+        <div class="feature"><i class="fas fa-check-circle"></i><span>Coiffeurs experts</span></div>
+        <div class="feature"><i class="fas fa-check-circle"></i><span>Produits premium</span></div>
+        <div class="feature"><i class="fas fa-check-circle"></i><span>Ambiance relaxante</span></div>
+        <div class="feature"><i class="fas fa-check-circle"></i><span>Sur rendez-vous</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-title">
+    <span class="label">Ce que nous offrons</span>
+    <h2>Nos <span>Services</span></h2>
+    <div class="divider"></div>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon"><i class="fas fa-cut"></i></div>
+      <h3>Coupe & Coiffage</h3>
+      <p>Coupes tendance et coiffages personnalisés adaptés à votre style et votre visage.</p>
+      <div class="price">À partir de 25€</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fas fa-palette"></i></div>
+      <h3>Coloration</h3>
+      <p>Colorations professionnelles, balayages et mèches pour des cheveux éclatants.</p>
+      <div class="price">À partir de 60€</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fas fa-spa"></i></div>
+      <h3>Soins Capillaires</h3>
+      <p>Traitements nourrissants et réparateurs pour des cheveux en pleine santé.</p>
+      <div class="price">À partir de 35€</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fas fa-crown"></i></div>
+      <h3>Coiffure Mariage</h3>
+      <p>Mises en plis élégantes pour votre grand jour et toutes vos occasions spéciales.</p>
+      <div class="price">À partir de 80€</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fas fa-magic"></i></div>
+      <h3>Lissage Brésilien</h3>
+      <p>Lissage professionnel pour des cheveux doux, brillants et sans frisottis.</p>
+      <div class="price">À partir de 120€</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fas fa-gem"></i></div>
+      <h3>Tresses & Tressage</h3>
+      <p>Tresses africaines, vanilles, cornrows et autres coiffures traditionnelles.</p>
+      <div class="price">À partir de 40€</div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="section-title">
+    <span class="label">Notre travail</span>
+    <h2>Galerie <span>Photos</span></h2>
+    <div class="divider"></div>
+  </div>
+  <div class="gallery-grid" id="galleryGrid">
+    <!-- Les images seront ajoutées via JavaScript -->
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-title">
+    <span class="label">Contactez-nous</span>
+    <h2>Prenez <span>Rendez-vous</span></h2>
+    <div class="divider"></div>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <h3>Informations</h3>
+      <div class="contact-item">
+        <i class="fas fa-map-marker-alt"></i>
+        <div>
+          <h4>Adresse</h4>
+          <p>13°35'13.43"N 2°06'47.96"E<br>Niamey, Niger</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <i class="fab fa-whatsapp"></i>
+        <div>
+          <h4>WhatsApp</h4>
+          <p>+227 80 14 41 10</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <i class="fas fa-envelope"></i>
+        <div>
+          <h4>Email</h4>
+          <p>contact@aichabeaute.com</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <i class="fas fa-clock"></i>
+        <div>
+          <h4>Horaires</h4>
+          <p>Lun - Sam : 9h00 - 19h00<br>Dimanche : Fermé</p>
+        </div>
+      </div>
+      <a href="https://wa.me/22780144110" class="btn btn-whatsapp" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        Nous contacter sur WhatsApp
+      </a>
+      <a href="https://www.google.com/maps?q=13.587064,2.113322" class="btn btn-map" target="_blank">
+        <i class="fas fa-map-marked-alt"></i>
+        Ouvrir la carte Google Maps
+      </a>
+    </div>
+    <form class="contact-form" onsubmit="handleSubmit(event)">
+      <div class="form-group">
+        <input type="text" placeholder="Votre nom" required>
+      </div>
+      <div class="form-group">
+        <input type="email" placeholder="Votre email" required>
+      </div>
+      <div class="form-group">
+        <input type="tel" placeholder="Votre téléphone" required>
+      </div>
+      <div class="form-group">
+        <textarea placeholder="Votre message ou demande de rendez-vous" required></textarea>
+      </div>
+      <button type="submit" class="btn" style="width: 100%;">Envoyer le message</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="social-links">
+    <a href="#"><i class="fab fa-facebook-f"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="https://wa.me/22780144110" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <a href="#"><i class="fab fa-tiktok"></i></a>
+  </div>
+  <p>&copy; 2026 Aicha Beauté - Tous droits réservés | Créé avec ❤️</p>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-content">
+    <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+    <div class="lightbox-model-info" id="lightboxModelInfo">
+      <i class="fas fa-image"></i>
+      <span id="lightboxModelText">Modèle n°1</span>
+    </div>
+    <img id="lightboxImg" src="" alt="">
+    <button class="lightbox-reserve" onclick="openDateModal()">
+      <i class="fab fa-whatsapp"></i>
+      Réserver ce modèle
+    </button>
+  </div>
+</div>
+
+<!-- DATE MODAL -->
+<div class="date-modal" id="dateModal">
+  <div class="date-modal-content">
+    <h3>Choisir une date</h3>
+    <div class="selected-model" id="selectedModelInfo">Modèle n°1</div>
+    <input type="date" id="dateInput" required>
+    <div class="date-modal-buttons">
+      <button class="btn-cancel" onclick="closeDateModal()">Annuler</button>
+      <button class="btn-confirm" onclick="confirmReservation()">Confirmer</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Liste des images du dépôt GitHub
+  const images = [
+    'IMG-20260621-WA0018.jpg',
+    '02a46dc2cf13d63feea30e9485994cfe.jpg',
+    '05f7ea78cce48078461e1dbbbb0311dd.jpg',
+    '0663435036ce0c2834ae20a9e6130127.jpg',
+    '086428fcc5ff042960a7c7943e71c2fa.jpg',
+    '11181e85789431e313f71d46be0ebecd.jpg',
+    '1519ff17fe97f627537975e45fd6949b.jpg',
+    '1b2941574526e2e689448ca40d9ea564.jpg',
+    '274678bebd4ad7bf5c07f475d8bcd3d4.jpg',
+    '2b8d39533d027358c0cd86d0842666b5.jpg',
+    '2e91ae02e0c604232e61ac7474ef1e08.jpg',
+    '2fddb095ed725d7f9c0297d3f9096512.jpg',
+    '3f48676d033679cc6457e9a41ad16bba.jpg',
+    '400c4a79089f4726098c43e20a0baad5.jpg',
+    '4278530398183adf7aac72d3bbc7238a.jpg',
+    '4fa3db5b3975aee60dda9af18e84701b.jpg',
+    '58911576902627b8bb065ea585c6cb4d.jpg',
+    '5be6b0f1f19dc57324102535e87adc13.jpg',
+    '5fe78e4db4fd3eba3e0af6abb470ef43.jpg',
+    '629706231a76b09c5cc2af2313ca90c8.jpg',
+    '6a5a376377a3e6641451d4691a8dc001.jpg',
+    '715538a5f0dce115d930b3336089c431.jpg',
+    '7bc027215a5372192115549e84b9e422.jpg',
+    '7cc17dd003de1930a7fe990fc8d661b2.jpg',
+    '80f637d81ade3994d530ef40ccf6beed.jpg',
+    '8f56f18df40bf432133e4365fd7d838a.jpg',
+    '927a0c259e5fb78c1427b71957a9b22a.jpg',
+    '9c302c867ad42eae00f1c4074a251b9c.jpg',
+    '9f5e7ba9f41d5671ae0a43c87b27153f.jpg',
+    'a0f6f1da9f5d7e37b613bc0cb4fca86d.jpg',
+    'a15862d95bb5d37d4fda8b2247812cad.jpg',
+    'a311b0b58fab687656158b1363931e58.jpg',
+    'a7b1767e6387d10522ec14d05a1d7d3b.jpg',
+    'b928060f2de779fbae3625a7001ae8c6.jpg',
+    'be1f74c65d63577588d4b2af43fcb968.jpg',
+    'c38594cd60c6cb51c89c0bab5ea0312d.jpg',
+    'cadcebaa0fdd473a462681d3ce236951.jpg',
+    'dc252b975457e5934d90a96a7a839c9c.jpg',
+    'dcb8b0e4b5433787f7aacfb2815d0190.jpg',
+    'dcfbe2d83b186ecbaeb3eea4a52e5e42.jpg',
+    'f698c5195f858a9f4859dea88ba2b052.jpg'
+  ];
+  
+  const baseUrl = 'https://raw.githubusercontent.com/zakoyabdoulhafizou959-jpg/A-cha-beaut-/main/';
+  const galleryGrid = document.getElementById('galleryGrid');
+  let currentModelNumber = 1;
+  const whatsappNumber = '22780144110';
+  
+  // Generate gallery with model numbers
+  images.forEach((img, index) => {
+    const modelNumber = index + 1;
+    const div = document.createElement('div');
+    div.className = 'gallery-item';
+    const imgUrl = baseUrl + img;
+    div.innerHTML = `
+      <span class="model-badge">Modèle n°${modelNumber}</span>
+      <img src="${imgUrl}" alt="Modèle ${modelNumber}" loading="lazy">
+    `;
+    div.onclick = () => openLightbox(imgUrl, modelNumber);
+    galleryGrid.appendChild(div);
+  });
+  
+  // Navbar scroll effect
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('navbar');
+    if (window.scrollY > 50) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  });
+  
+  // Mobile menu
+  function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('active');
+  }
+  
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.getElementById('navLinks').classList.remove('active');
+    });
+  });
+  
+  // Lightbox functions - now with model number
+  function openLightbox(src, modelNumber) {
+    currentModelNumber = modelNumber;
+    document.getElementById('lightboxImg').src = src;
+    document.getElementById('lightboxModelText').textContent = `Modèle n°${modelNumber}`;
+    document.getElementById('lightbox').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = 'auto';
+  }
+  
+  // Date Modal functions
+  function openDateModal() {
+    document.getElementById('lightbox').classList.remove('active');
+    document.getElementById('selectedModelInfo').textContent = `Modèle n°${currentModelNumber}`;
+    document.getElementById('dateModal').classList.add('active');
+    // Set minimum date to today
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('dateInput').setAttribute('min', today);
+  }
+  
+  function closeDateModal() {
+    document.getElementById('dateModal').classList.remove('active');
+    document.getElementById('lightbox').classList.add('active');
+  }
+  
+  function confirmReservation() {
+    const dateInput = document.getElementById('dateInput').value;
+    
+    if (!dateInput) {
+      alert('Veuillez sélectionner une date');
+      return;
+    }
+    
+    // Format the date to DD/MM/YYYY
+    const date = new Date(dateInput);
+    const formattedDate = `${String(date.getDate()).padStart(2, '0')}/${String(date.getMonth() + 1).padStart(2, '0')}/${date.getFullYear()}`;
+    
+    // Create WhatsApp message WITH model number
+    const message = `Bonjour Aicha Beauté,
+
+Je souhaite réserver le Modèle n°${currentModelNumber} pour la date du ${formattedDate}.
+
+Merci de me confirmer la disponibilité.
+
+Cordialement.`;
+    
+    // Encode the message for URL
+    const encodedMessage = encodeURIComponent(message);
+    
+    // Open WhatsApp
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+    window.open(whatsappUrl, '_blank');
+    
+    // Close modal
+    document.getElementById('dateModal').classList.remove('active');
+    document.body.style.overflow = 'auto';
+  }
+  
+  // Form
+  function handleSubmit(e) {
+    e.preventDefault();
+    alert('Merci ! Votre message a été envoyé. Nous vous contacterons bientôt.');
+    e.target.reset();
+  }
+  
+  // Close lightbox on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeLightbox();
+      document.getElementById('dateModal').classList.remove('active');
+    }
+  });
+  
+  // Scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+  
+  document.querySelectorAll('.service-card, .gallery-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'all 0.6s ease';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+  </html>
