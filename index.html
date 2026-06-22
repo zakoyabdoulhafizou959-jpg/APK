@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aicha Beauté - Salon de Coiffure</title>
+<title>Aicha Beauté - Salon de Coiffure & Boutique</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
@@ -62,6 +62,7 @@
     display: flex;
     gap: 35px;
     list-style: none;
+    align-items: center;
   }
   
   .nav-links a {
@@ -88,6 +89,35 @@
   
   .nav-links a:hover::after { width: 100%; }
   
+  .section-tabs {
+    display: flex;
+    gap: 10px;
+    background: rgba(255,255,255,0.1);
+    padding: 5px;
+    border-radius: 30px;
+  }
+  
+  .section-tab {
+    padding: 8px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s;
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 14px;
+  }
+  
+  .section-tab.active {
+    background: var(--primary);
+    color: white;
+  }
+  
+  .section-tab:hover:not(.active) {
+    background: rgba(255,255,255,0.2);
+  }
+  
   .menu-toggle {
     display: none;
     color: white;
@@ -104,6 +134,7 @@
     justify-content: center;
     text-align: center;
     overflow: hidden;
+    margin-top: 0;
   }
   
   .hero::before {
@@ -429,9 +460,15 @@
     font-size: 20px;
   }
   
-  /* GALLERY */
-  .gallery {
+  /* GALLERY SECTIONS */
+  .gallery-section {
+    display: none;
+    padding: 100px 8%;
     background: white;
+  }
+  
+  .gallery-section.active {
+    display: block;
   }
   
   .gallery-grid {
@@ -492,6 +529,37 @@
   
   .gallery-item:hover img { transform: scale(1.15); }
   .gallery-item:hover::after { opacity: 1; }
+  
+  /* Section headers */
+  .section-header {
+    text-align: center;
+    margin-bottom: 50px;
+    padding: 30px;
+    background: linear-gradient(135deg, var(--light), white);
+    border-radius: 15px;
+  }
+  
+  .section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    color: var(--dark);
+    margin-bottom: 15px;
+  }
+  
+  .section-header p {
+    font-size: 16px;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .boutique-section .section-header {
+    background: linear-gradient(135deg, #fff5f5, white);
+  }
+  
+  .salon-section .section-header {
+    background: linear-gradient(135deg, #f5fff5, white);
+  }
   
   /* CONTACT */
   .contact {
@@ -684,6 +752,14 @@
     box-shadow: 0 5px 15px rgba(201, 169, 110, 0.4);
   }
   
+  .lightbox-section-badge {
+    background: var(--whatsapp);
+    padding: 5px 15px;
+    border-radius: 15px;
+    font-size: 12px;
+    margin-left: 10px;
+  }
+  
   .lightbox-reserve {
     margin-top: 25px;
     padding: 15px 40px;
@@ -821,6 +897,16 @@
     section { padding: 70px 5%; }
     
     .btn-outline { margin-left: 0; margin-top: 15px; }
+    
+    .section-tabs {
+      flex-direction: column;
+      width: 100%;
+    }
+    
+    .section-tab {
+      width: 100%;
+      text-align: center;
+    }
   }
 </style>
 </head>
@@ -830,10 +916,19 @@
 <nav id="navbar">
   <div class="logo">Aicha<span> Beauté</span></div>
   <ul class="nav-links" id="navLinks">
-    <li><a href="#home">Accueil</a></li>
+    <li>
+      <div class="section-tabs">
+        <button class="section-tab active" onclick="switchSection('salon')">
+          <i class="fas fa-cut"></i> Salon de coiffure
+        </button>
+        <button class="section-tab" onclick="switchSection('boutique')">
+          <i class="fas fa-shopping-bag"></i> Boutique
+        </button>
+      </div>
+    </li>
     <li><a href="#about">À propos</a></li>
     <li><a href="#services">Services</a></li>
-    <li><a href="#gallery">Galerie</a></li>
+    <li><a href="#galerie">Galerie</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="menu-toggle" onclick="toggleMenu()">
@@ -844,10 +939,10 @@
 <!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-content">
-    <p class="subtitle">✦ Salon de Coiffure & Beauté ✦</p>
+    <p class="subtitle">✦ Salon de Coiffure & Boutique ✦</p>
     <h1>Révélez votre <span>Beauté</span><br>naturelle</h1>
-    <p>Une expérience unique de soins et de coiffure dans un cadre élégant et raffiné</p>
-    <a href="#services" class="btn">Nos Services</a>
+    <p>Une expérience unique de soins, coiffure et produits de beauté dans un cadre élégant et raffiné</p>
+    <a href="#galerie" class="btn">Voir la Galerie</a>
     <a href="#contact" class="btn btn-outline">Prendre RDV</a>
   </div>
   <a href="#about" class="scroll-down"><i class="fas fa-chevron-down"></i></a>
@@ -867,11 +962,11 @@
     <div class="about-text">
       <h3>Bienvenue chez Aicha Beauté</h3>
       <p>Dans notre salon, nous croyons que chaque femme mérite de se sentir belle et confiante. Notre équipe passionnée de coiffeurs professionnels vous accueille dans un cadre chaleureux et moderne pour sublimer votre beauté naturelle.</p>
-      <p>Que ce soit pour une coupe tendance, une coloration éclatante, un soin capillaire profond ou une mise en beauté pour une occasion spéciale, nous mettons tout notre savoir-faire à votre service.</p>
+      <p>Nous proposons également une sélection exclusive de produits de beauté et accessoires dans notre boutique pour prendre soin de vous au quotidien.</p>
       <div class="features">
         <div class="feature"><i class="fas fa-check-circle"></i><span>Coiffeurs experts</span></div>
         <div class="feature"><i class="fas fa-check-circle"></i><span>Produits premium</span></div>
-        <div class="feature"><i class="fas fa-check-circle"></i><span>Ambiance relaxante</span></div>
+        <div class="feature"><i class="fas fa-check-circle"></i><span>Boutique exclusive</span></div>
         <div class="feature"><i class="fas fa-check-circle"></i><span>Sur rendez-vous</span></div>
       </div>
     </div>
@@ -890,50 +985,60 @@
       <div class="service-icon"><i class="fas fa-cut"></i></div>
       <h3>Coupe & Coiffage</h3>
       <p>Coupes tendance et coiffages personnalisés adaptés à votre style et votre visage.</p>
-      <div class="price"></div>
+      <div class="price">À partir de 25€</div>
     </div>
     <div class="service-card">
       <div class="service-icon"><i class="fas fa-palette"></i></div>
       <h3>Coloration</h3>
       <p>Colorations professionnelles, balayages et mèches pour des cheveux éclatants.</p>
-      <div class="price"></div>
+      <div class="price">À partir de 60€</div>
     </div>
     <div class="service-card">
       <div class="service-icon"><i class="fas fa-spa"></i></div>
       <h3>Soins Capillaires</h3>
       <p>Traitements nourrissants et réparateurs pour des cheveux en pleine santé.</p>
-      <div class="price"></div>
+      <div class="price">À partir de 35€</div>
     </div>
     <div class="service-card">
       <div class="service-icon"><i class="fas fa-crown"></i></div>
       <h3>Coiffure Mariage</h3>
       <p>Mises en plis élégantes pour votre grand jour et toutes vos occasions spéciales.</p>
-      <div class="price"></div>
+      <div class="price">À partir de 80€</div>
     </div>
     <div class="service-card">
       <div class="service-icon"><i class="fas fa-magic"></i></div>
       <h3>Lissage Brésilien</h3>
       <p>Lissage professionnel pour des cheveux doux, brillants et sans frisottis.</p>
-      <div class="price"></div>
+      <div class="price">À partir de 120€</div>
     </div>
     <div class="service-card">
       <div class="service-icon"><i class="fas fa-gem"></i></div>
       <h3>Tresses & Tressage</h3>
       <p>Tresses africaines, vanilles, cornrows et autres coiffures traditionnelles.</p>
-      <div class="price"></div>
+      <div class="price">À partir de 40€</div>
     </div>
   </div>
 </section>
 
-<!-- GALLERY -->
-<section class="gallery" id="gallery">
-  <div class="section-title">
-    <span class="label">Notre travail</span>
-    <h2>Galerie <span>Photos</span></h2>
-    <div class="divider"></div>
+<!-- SALON DE COIFFURE GALLERY -->
+<section class="gallery-section salon-section active" id="salonGallery">
+  <div class="section-header">
+    <h2><i class="fas fa-cut" style="color: var(--primary);"></i> Salon de Coiffure</h2>
+    <p>Découvrez nos réalisations en matière de coiffure, coloration et soins capillaires</p>
   </div>
-  <div class="gallery-grid" id="galleryGrid">
-    <!-- Les images seront ajoutées via JavaScript -->
+  <div class="gallery-grid" id="salonGrid">
+    <!-- Images du salon seront ajoutées via JavaScript -->
+  </div>
+</section>
+
+<!-- BOUTIQUE GALLERY -->
+<section class="gallery-section boutique-section" id="boutiqueGallery">
+  <div class="section-header">
+    <h2><i class="fas fa-shopping-bag" style="color: var(--primary);"></i> Boutique</h2>
+    <p>Découvrez notre sélection exclusive de produits de beauté et accessoires</p>
+  </div>
+  <div class="gallery-grid" id="boutiqueGrid">
+    <!-- Images de la boutique seront ajoutées via JavaScript -->
   </div>
 </section>
 
@@ -972,7 +1077,7 @@
         <i class="fas fa-clock"></i>
         <div>
           <h4>Horaires</h4>
-          <p>Lun - Sam : 9h00 - 21h00<br>Vendredi : Fermé</p>
+          <p>Lun - Sam : 9h00 - 19h00<br>Dimanche : Fermé</p>
         </div>
       </div>
       <a href="https://wa.me/22780144110" class="btn btn-whatsapp" target="_blank">
@@ -1020,6 +1125,7 @@
     <div class="lightbox-model-info" id="lightboxModelInfo">
       <i class="fas fa-image"></i>
       <span id="lightboxModelText">Modèle n°1</span>
+      <span class="lightbox-section-badge" id="lightboxSectionBadge">Salon</span>
     </div>
     <img id="lightboxImg" src="" alt="">
     <button class="lightbox-reserve" onclick="openDateModal()">
@@ -1043,8 +1149,8 @@
 </div>
 
 <script>
-  // Liste des images du dépôt GitHub
-  const images = [
+  // Liste complète des images
+  const allImages = [
     'IMG-20260621-WA0018.jpg',
     '02a46dc2cf13d63feea30e9485994cfe.jpg',
     '05f7ea78cce48078461e1dbbbb0311dd.jpg',
@@ -1088,24 +1194,86 @@
     'f698c5195f858a9f4859dea88ba2b052.jpg'
   ];
   
+  // Images de la boutique (positions originales: 1, 4, 6, 16, 18, 23, 26, 27, 28, 38)
+  // En index 0-based: 0, 3, 5, 15, 17, 22, 25, 26, 27, 37
+  const boutiqueIndexes = [0, 3, 5, 15, 17, 22, 25, 26, 27, 37];
+  
   const baseUrl = 'https://raw.githubusercontent.com/zakoyabdoulhafizou959-jpg/A-cha-beaut-/main/';
-  const galleryGrid = document.getElementById('galleryGrid');
+  const salonGrid = document.getElementById('salonGrid');
+  const boutiqueGrid = document.getElementById('boutiqueGrid');
+  
   let currentModelNumber = 1;
+  let currentSection = 'salon';
   const whatsappNumber = '22780144110';
   
-  // Generate gallery with model numbers
-  images.forEach((img, index) => {
+  // Séparer les images entre salon et boutique
+  const salonImages = [];
+  const boutiqueImages = [];
+  
+  allImages.forEach((img, index) => {
+    if (boutiqueIndexes.includes(index)) {
+      boutiqueImages.push({
+        src: baseUrl + img,
+        originalIndex: index + 1
+      });
+    } else {
+      salonImages.push({
+        src: baseUrl + img,
+        originalIndex: index + 1
+      });
+    }
+  });
+  
+  // Generate salon gallery
+  salonImages.forEach((imgData, index) => {
     const modelNumber = index + 1;
     const div = document.createElement('div');
     div.className = 'gallery-item';
-    const imgUrl = baseUrl + img;
     div.innerHTML = `
-      <span class="model-badge">Modèle n°${modelNumber}</span>
-      <img src="${imgUrl}" alt="Modèle ${modelNumber}" loading="lazy">
+      <span class="model-badge">Salon n°${modelNumber}</span>
+      <img src="${imgData.src}" alt="Salon modèle ${modelNumber}" loading="lazy">
     `;
-    div.onclick = () => openLightbox(imgUrl, modelNumber);
-    galleryGrid.appendChild(div);
+    div.onclick = () => openLightbox(imgData.src, modelNumber, 'salon');
+    salonGrid.appendChild(div);
   });
+  
+  // Generate boutique gallery
+  boutiqueImages.forEach((imgData, index) => {
+    const modelNumber = index + 1;
+    const div = document.createElement('div');
+    div.className = 'gallery-item';
+    div.innerHTML = `
+      <span class="model-badge">Boutique n°${modelNumber}</span>
+      <img src="${imgData.src}" alt="Boutique modèle ${modelNumber}" loading="lazy">
+    `;
+    div.onclick = () => openLightbox(imgData.src, modelNumber, 'boutique');
+    boutiqueGrid.appendChild(div);
+  });
+  
+  // Switch between sections
+  function switchSection(section) {
+    currentSection = section;
+    
+    // Update tabs
+    document.querySelectorAll('.section-tab').forEach(tab => {
+      tab.classList.remove('active');
+    });
+    event.target.closest('.section-tab').classList.add('active');
+    
+    // Update gallery sections
+    document.querySelectorAll('.gallery-section').forEach(sec => {
+      sec.classList.remove('active');
+    });
+    
+    if (section === 'salon') {
+      document.getElementById('salonGallery').classList.add('active');
+    } else {
+      document.getElementById('boutiqueGallery').classList.add('active');
+    }
+    
+    // Smooth scroll to gallery
+    document.getElementById('salonGallery').scrollIntoView({ behavior: 'smooth' });
+  }
   
   // Navbar scroll effect
   window.addEventListener('scroll', () => {
@@ -1125,11 +1293,17 @@
     });
   });
   
-  // Lightbox functions - now with model number
-  function openLightbox(src, modelNumber) {
+  // Lightbox functions
+  function openLightbox(src, modelNumber, section) {
     currentModelNumber = modelNumber;
+    currentSection = section;
+    
     document.getElementById('lightboxImg').src = src;
-    document.getElementById('lightboxModelText').textContent = `Modèle n°${modelNumber}`;
+    document.getElementById('lightboxModelText').textContent = 
+      section === 'salon' ? `Salon n°${modelNumber}` : `Boutique n°${modelNumber}`;
+    document.getElementById('lightboxSectionBadge').textContent = 
+      section === 'salon' ? 'Salon' : 'Boutique';
+    
     document.getElementById('lightbox').classList.add('active');
     document.body.style.overflow = 'hidden';
   }
@@ -1142,8 +1316,13 @@
   // Date Modal functions
   function openDateModal() {
     document.getElementById('lightbox').classList.remove('active');
-    document.getElementById('selectedModelInfo').textContent = `Modèle n°${currentModelNumber}`;
+    
+    const sectionText = currentSection === 'salon' ? 'Salon' : 'Boutique';
+    document.getElementById('selectedModelInfo').textContent = 
+      `${sectionText} n°${currentModelNumber}`;
+    
     document.getElementById('dateModal').classList.add('active');
+    
     // Set minimum date to today
     const today = new Date().toISOString().split('T')[0];
     document.getElementById('dateInput').setAttribute('min', today);
@@ -1166,10 +1345,12 @@
     const date = new Date(dateInput);
     const formattedDate = `${String(date.getDate()).padStart(2, '0')}/${String(date.getMonth() + 1).padStart(2, '0')}/${date.getFullYear()}`;
     
-    // Create WhatsApp message WITH model number
+    const sectionText = currentSection === 'salon' ? 'Salon' : 'Boutique';
+    
+    // Create WhatsApp message WITH model number and section
     const message = `Bonjour Aicha Beauté,
 
-Je souhaite réserver le Modèle n°${currentModelNumber} pour la date du ${formattedDate}.
+Je souhaite réserver le ${sectionText} n°${currentModelNumber} pour la date du ${formattedDate}.
 
 Merci de me confirmer la disponibilité.
 
@@ -1221,4 +1402,4 @@ Cordialement.`;
 </script>
 
 </body>
-  </html>
+</html>
